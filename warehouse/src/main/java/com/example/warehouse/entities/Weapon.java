@@ -1,0 +1,49 @@
+package com.example.warehouse.entities;
+
+import com.example.warehouse.enums.WeaponStatus;
+import com.example.warehouse.enums.WeaponType;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "WEAPON")
+public class Weapon {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "WEAPON_SEQ")
+    @SequenceGenerator(name = "WEAPON_SEQ", sequenceName = "WEAPON_SEQ", allocationSize = 1)
+    private Long id;
+
+    @Column(name = "NAME")
+    private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "WEAPON_TYPE")
+    private WeaponType weaponType;
+
+    @Column(name = "CALIBER")
+    private String caliber;
+
+    @Column(name = "SERIAL_NUMBER")
+    private String serialNumber;
+
+    @Column(name = "PRODUCTION_DATE")
+    private LocalDate productionDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "WEAPON_STATUS")
+    private WeaponStatus weaponStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "WAREHOUSE_LOCATION_ID")
+    private WarehouseLocation warehouseLocation;
+}

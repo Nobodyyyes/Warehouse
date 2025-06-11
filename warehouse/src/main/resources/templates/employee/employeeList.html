@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Сотрудники</title>
+    <link rel="stylesheet" th:href="@{/employee/employee-list.css}" />
+</head>
+
+<body>
+<h1>Список сотрудников</h1>
+
+<a th:href="@{/employees/new}">Добавить сотрудника</a>
+
+<table border="1">
+    <tr>
+        <th>ФИО</th>
+        <th>Звание</th>
+        <th>Должность</th>
+        <th>Отдел</th>
+        <th>Номер паспорта</th>
+        <th>Номер сервиса</th>
+        <th>Активный</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.fullName}"></td>
+        <td th:text="${employee.rank.getDescription()}"></td>
+        <td th:text="${employee.position.getDescription()}"></td>
+        <td th:text="${employee.department}"></td>
+        <td th:text="${employee.passportNumber}"></td>
+        <td th:text="${employee.serviceNumber}"></td>
+        <td th:text="${employee.isActive()}"></td>
+        <td>
+            <a th:href="@{'/employees/edit/' + ${employee.id}}">Редактировать</a> |
+            <a th:href="@{'/employees/delete/' + ${employee.id}}">Удалить</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+
