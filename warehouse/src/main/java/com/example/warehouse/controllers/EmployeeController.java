@@ -1,5 +1,7 @@
 package com.example.warehouse.controllers;
 
+import com.example.warehouse.enums.EmployeePosition;
+import com.example.warehouse.enums.EmployeeRank;
 import com.example.warehouse.models.EmployeeModel;
 import com.example.warehouse.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,20 @@ public class EmployeeController {
     public String listEmployees(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployees());
         return "employee/employeeList";
+    }
+
+    @GetMapping("/new")
+    public String showCreateForm(Model model) {
+        model.addAttribute("employee", new EmployeeModel());
+        model.addAttribute("ranks", EmployeeRank.values());
+        model.addAttribute("positions", EmployeePosition.values());
+        return "employee/employeeNew";
+    }
+
+    @PostMapping("/new")
+    public String createEmployee(@ModelAttribute("employee") EmployeeModel employeeModel) {
+        employeeService.create(employeeModel);
+        return "redirect:/employees";
     }
 
     @GetMapping("/edit/{id}")
