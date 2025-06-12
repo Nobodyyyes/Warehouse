@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование оружия</title>
+    <link rel="stylesheet" th:href="@{/employee/employee-edit.css}" />
+</head>
+<body>
+
+<h1>Редактировать оружие</h1>
+
+<form th:action="@{'/weapons/edit/' + ${weapon.id}}" th:object="${weapon}" method="post">
+    <label>Название: <input type="text" th:field="*{name}" /></label><br/>
+    <label>Тип оружия: <input type="text" th:field="*{weaponType}" /></label><br/>
+    <label>Калибр: <input type="text" th:field="*{caliber}" /></label><br/>
+    <label>Серийный номер: <input type="text" th:field="*{serialNumber}" /></label><br/>
+    <label>Дата продукции: <input type="text" th:field="*{productionDate}" /></label><br/>
+    <label>Статус: <input type="text" th:field="*{weaponStatus}" /></label><br/>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<a th:href="@{/weapons}">Назад к списку</a>
+</body>
+</html>

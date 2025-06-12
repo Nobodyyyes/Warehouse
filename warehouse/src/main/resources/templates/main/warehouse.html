@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Склад – Главная</title>
+    <link rel="stylesheet" th:href="@{/main/warehouse.css}" />
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <h2>Меню</h2>
+        <ul>
+            <li><a th:href="@{/weapons}">🔫 Оружие</a></li>
+            <li><a th:href="@{/employees}">👤 Сотрудники</a></li>
+        </ul>
+    </aside>
+
+    <main class="content">
+        <h1>Добро пожаловать на склад</h1>
+        <p>Выберите раздел в меню слева для работы с системой.</p>
+    </main>
+</div>
+
+</body>
+</html>

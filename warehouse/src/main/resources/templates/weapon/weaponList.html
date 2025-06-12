@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список оружия</title>
+    <link rel="stylesheet" th:href="@{/weapon/weapon-list.css}"/>
+</head>
+
+<body>
+<h1>Список оружия</h1>
+
+<a th:href="@{/weapons/new}">Добавить оружие</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Тип</th>
+        <th>Калибр</th>
+        <th>Серийный номер</th>
+        <th>Дата производства</th>
+        <th>Статус</th>
+        <th>Расположение на складе</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="weapon : ${weapons}">
+        <td th:text="${weapon.id}"></td>
+        <td th:text="${weapon.name}"></td>
+        <td th:text="${weapon.weaponType}"></td>
+        <td th:text="${weapon.caliber}"></td>
+        <td th:text="${weapon.serialNumber}"></td>
+        <td th:text="${weapon.productionDate}"></td>
+        <td th:text="${weapon.weaponStatus}"></td>
+        <td th:text="${weapon.warehouseLocation}"></td>
+        <td>
+            <a th:href="@{'/weapons/edit/' + ${weapon.id}}">Редактировать</a> |
+            <a th:href="@{'/weapons/delete/' + ${weapon.id}}">Удалить</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
