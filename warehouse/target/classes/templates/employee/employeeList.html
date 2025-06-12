@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Сотрудники</title>
-    <link rel="stylesheet" th:href="@{/employee/employee-list.css}" />
+    <link rel="stylesheet" th:href="@{/employee/employee-list.css}"/>
 </head>
 
 <body>
@@ -12,16 +12,18 @@
 
 <table border="1">
     <tr>
+        <th>ID</th>
         <th>ФИО</th>
         <th>Звание</th>
         <th>Должность</th>
         <th>Отдел</th>
         <th>Номер паспорта</th>
-        <th>Номер сервиса</th>
+        <th>Служебный номер</th>
         <th>Активный</th>
         <th>Действия</th>
     </tr>
     <tr th:each="employee : ${employees}">
+        <td th:text="${employee.id}"></td>
         <td th:text="${employee.fullName}"></td>
         <td th:text="${employee.rank.getDescription()}"></td>
         <td th:text="${employee.position.getDescription()}"></td>
@@ -37,4 +39,3 @@
 </table>
 </body>
 </html>
-

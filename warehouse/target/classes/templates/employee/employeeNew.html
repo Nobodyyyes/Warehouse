@@ -8,7 +8,7 @@
 
 <h1>Добавить сотрудника</h1>
 
-<form th:action="@{'/employees/new/'}" th:object="${employee}" method="post">
+<form th:action="@{'/employees/new'}" th:object="${employee}" method="post">
     <label>ФИО: <input type="text" th:field="*{fullName}" required /></label><br/>
     <label>Звание:
         <select th:field="*{rank}">

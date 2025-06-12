@@ -2,6 +2,8 @@ com\example\warehouse\enums\MaintenanceStatus.class
 com\example\warehouse\enums\WeaponStatus.class
 com\example\warehouse\services\WeaponHistoryService.class
 com\example\warehouse\repositories\EmployeeRepository.class
+com\example\warehouse\controllers\WeaponController.class
+com\example\warehouse\repositories\WeaponRepository.class
 com\example\warehouse\controllers\EmployeeController.class
 com\example\warehouse\enums\WeaponType.class
 com\example\warehouse\models\EmployeeModel.class
@@ -19,7 +21,9 @@ com\example\warehouse\enums\EmployeePosition.class
 com\example\warehouse\models\WarehouseLocationModel.class
 com\example\warehouse\mappers\EmployeeMapper.class
 com\example\warehouse\entities\Employee.class
+com\example\warehouse\mappers\WeaponMapper.class
 com\example\warehouse\entities\WeaponHistory.class
 com\example\warehouse\services\WarehouseLocationService.class
 com\example\warehouse\entities\MaintenanceRecord.class
 com\example\warehouse\WarehouseApplication.class
+com\example\warehouse\services\impl\WeaponServiceImpl.class
