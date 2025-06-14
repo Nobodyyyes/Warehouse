@@ -22,6 +22,6 @@ public class WeaponHistoryModel {
     private Employee employee;
     private LocalDate issueAt;
     private LocalDate returnedAt;
-    private String issueBy;
+    private String issuedBy;
     private String notes;
 }

@@ -10,6 +10,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -48,4 +49,15 @@ public class Weapon {
     @ManyToOne
     @JoinColumn(name = "WAREHOUSE_LOCATION_ID")
     private WarehouseLocation warehouseLocation;
+
+    @ManyToOne
+    @JoinColumn(name = "EMPLOYEE_ID")
+    private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "CLIENT_ID")
+    private Client client;
+
+    @OneToMany(mappedBy = "weapon", cascade = CascadeType.ALL)
+    private List<WeaponHistory> weaponHistories;
 }

@@ -2,7 +2,6 @@ package com.example.warehouse.controllers;
 
 import com.example.warehouse.enums.WeaponStatus;
 import com.example.warehouse.enums.WeaponType;
-import com.example.warehouse.models.EmployeeModel;
 import com.example.warehouse.models.WeaponModel;
 import com.example.warehouse.services.WeaponService;
 import lombok.RequiredArgsConstructor;
@@ -45,9 +44,15 @@ public class WeaponController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateEmployee(@PathVariable Long id, @ModelAttribute WeaponModel weapon) {
+    public String updateWeapon(@PathVariable Long id, @ModelAttribute WeaponModel weapon) {
         weapon.setId(id);
         weaponService.updateWeapon(weapon);
+        return "redirect:/weapons";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteWeapon(@PathVariable Long id) {
+        weaponService.deleteWeapon(id);
         return "redirect:/weapons";
     }
 }

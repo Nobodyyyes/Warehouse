@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -45,4 +47,10 @@ public class Employee {
 
     @Column(name = "IS_ACTIVE")
     private boolean isActive;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<Weapon> weapons;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<WarehouseLocation> warehouseLocations;
 }

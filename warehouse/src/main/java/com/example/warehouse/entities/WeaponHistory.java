@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Accessors(chain = true)
 @Entity
 @Table(name = "WEAPON_HISTORY")
 public class WeaponHistory {
@@ -26,7 +28,7 @@ public class WeaponHistory {
     private Weapon weapon;
 
     @ManyToOne
-    @JoinColumn(name = "EMPOYEE_ID", nullable = false)
+    @JoinColumn(name = "EMPLOYEE_ID", nullable = false)
     private Employee employee;
 
     @Column(name = "ISSUE_AT")

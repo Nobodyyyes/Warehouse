@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Accessors(chain = true)
 @Entity
 @Table(name = "WAREHOUSE_LOCATION")
 public class WarehouseLocation {
@@ -32,4 +34,8 @@ public class WarehouseLocation {
 
     @OneToMany(mappedBy = "warehouseLocation", cascade = CascadeType.ALL)
     private List<Weapon> weapons;
+
+    @ManyToOne
+    @JoinColumn(name = "EMPLOYEE_ID")
+    private Employee employee;
 }
