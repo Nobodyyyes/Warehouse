@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Расположения на складе</title>
+    <link rel="stylesheet" th:href="@{/warehouseLocation/warehouseLocation-list.css}"/>
+</head>
+
+<body>
+<h1>Список расположений на складе</h1>
+
+<a th:href="@{/warehouse-locations/new}">Добавить расположение</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Секция</th>
+        <th>Полка</th>
+        <th>Описание</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="location : ${warehouseLocations}">
+        <td th:text="${location.id}"></td>
+        <td th:text="${location.section}"></td>
+        <td th:text="${location.shelf}"></td>
+        <td th:text="${location.description}"></td>
+        <td>
+            <a th:href="@{'/warehouse-locations/edit/' + ${location.id}}">Редактировать</a> |
+            <a th:href="@{'/warehouse-locations/delete/' + ${location.id}}">Удалить</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
