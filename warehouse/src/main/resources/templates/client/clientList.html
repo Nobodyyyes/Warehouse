@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Клиенты</title>
+    <link rel="stylesheet" th:href="@{/employee/employee-list.css}"/>
+</head>
+
+<body>
+<h1>Список клиентов</h1>
+
+<a th:href="@{/clients/new}">Добавить клиента</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>ФИО</th>
+        <th>Номер паспорта</th>
+        <th>Адрес</th>
+        <th>Номер телефона</th>
+        <th>Приобретённое оружие</th>
+        <th></th>
+    </tr>
+    <tr th:each="client : ${clients}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.fullName}"></td>
+        <td th:text="${client.passportNumber}"></td>
+        <td th:text="${client.address}"></td>
+        <td th:text="${client.phoneNumber}"></td>
+        <td>
+            <span th:each="weapon : ${client.purchasedWeapons}"
+                  th:text="${weapon.name} + ' (' + weapon.serialNumber + ')' + (not ${weaponStat.last} ? ', ' : '')"
+                  th:with="weaponStat=${weaponStat}">
+            </span>
+        </td>
+        <td>
+            <a th:href="@{'/clients/edit/' + ${client.id}}">Редактировать</a> |
+            <a th:href="@{'/clients/delete/' + ${client.id}}">Удалить</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
