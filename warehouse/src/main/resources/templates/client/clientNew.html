@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление клиента</title>
+    <link rel="stylesheet" th:href="@{/main/template-list.css}" />
+</head>
+<body>
+
+<h1>Добавить клиента</h1>
+
+<form th:action="@{'/clients/new'}" th:object="${client}" method="post">
+    <label>ФИО: <input type="text" th:field="*{fullName}" required /></label><br/>
+    <label>Паспорт: <input type="text" th:field="*{passportNumber}" /></label><br/>
+    <label>Адрес: <input type="text" th:field="*{address}" /></label><br/>
+    <label>Номер телефона: <input type="text" th:field="*{phoneNumber}" /></label><br/>
+    <label>Список оружия: <input type="text" th:field="*{purchasedWeapons}" /></label><br/>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<a th:href="@{/clients}">Назад к списку</a>
+</body>
+</html>
