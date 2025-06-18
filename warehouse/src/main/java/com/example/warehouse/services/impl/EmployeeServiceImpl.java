@@ -1,10 +1,10 @@
 package com.example.warehouse.services.impl;
 
-import com.example.warehouse.entities.Employee;
 import com.example.warehouse.mappers.EmployeeMapper;
 import com.example.warehouse.models.EmployeeModel;
 import com.example.warehouse.repositories.EmployeeRepository;
 import com.example.warehouse.services.EmployeeService;
+import com.example.warehouse.utils.ValidationUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,63 +19,67 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeMapper employeeMapper;
 
+    /**
+     * Получает список всех сотрудников.
+     *
+     * @return Список моделей сотрудников.
+     */
     @Override
     public List<EmployeeModel> getAllEmployees() {
-
-        List<EmployeeModel> employees = employeeMapper.toModels(employeeRepository.findAll());
-
-        if (employees.isEmpty()) {
-            throw new IllegalArgumentException("Employees does not exists");
-        }
-
-        return employees;
+        return employeeMapper.toModels(employeeRepository.findAll());
     }
 
+    /**
+     * Получает сотрудника по его идентификатору.
+     *
+     * @param id Идентификатор сотрудника.
+     * @return Optional, содержащий модель сотрудника, если сотрудник найден, или пустой Optional, если сотрудник не найден.
+     */
     @Override
     public Optional<EmployeeModel> getEmployee(Long id) {
-
-        Optional<Employee> employee = employeeRepository.findById(id);
-
-        if (employee.isPresent()) {
-            return employeeMapper.toOptionalModel(employee);
-        }
-
-        return Optional.empty();
+        return employeeRepository.findById(id)
+                .map(employeeMapper::toModel);
     }
 
+    /**
+     * Создает нового сотрудника.
+     *
+     * @param createEmployee Модель сотрудника, содержащая данные для создания.
+     * @return Модель сотрудника, созданного в базе данных.
+     */
     @Override
     public EmployeeModel create(EmployeeModel createEmployee) {
-
-        Employee saveEmployee = employeeMapper.toEntity(createEmployee);
-
-        return employeeMapper.toModel(employeeRepository.save(saveEmployee));
+        return employeeMapper.toModel(employeeRepository.save(employeeMapper.toEntity(createEmployee)));
     }
 
+    /**
+     * Обновляет данные сотрудника.
+     *
+     * @param updateEmployee Модель сотрудника, содержащая обновленные данные.
+     *                       Поле ID должно быть заполнено, чтобы указать, какой сотрудник обновляется.
+     * @return Модель сотрудника после обновления в базе данных.
+     * @throws IllegalArgumentException Если поле ID у модели сотрудника равно null.
+     */
     @Override
     public EmployeeModel update(EmployeeModel updateEmployee) {
 
-        Employee updatedEmployee = new Employee()
-                .setId(updateEmployee.getId())
-                .setFullName(updateEmployee.getFullName())
-                .setRank(updateEmployee.getRank())
-                .setPosition(updateEmployee.getPosition())
-                .setDepartment(updateEmployee.getDepartment())
-                .setPassportNumber(updateEmployee.getPassportNumber())
-                .setServiceNumber(updateEmployee.getServiceNumber())
-                .setActive(updateEmployee.isActive());
+        ValidationUtils.checkOnNull(updateEmployee.getId());
 
-        return employeeMapper.toModel(employeeRepository.save(updatedEmployee));
+        return employeeMapper.toModel(employeeRepository.save(employeeMapper.toEntity(updateEmployee)));
     }
 
+    /**
+     * Удаляет сотрудника по его идентификатору.
+     *
+     * @param id Идентификатор сотрудника, который нужно удалить.
+     * @throws IllegalArgumentException Если сотрудник с указанным идентификатором не найден.
+     */
     @Override
     public void deleteEmployee(Long id) {
 
-        Employee existingEmployee = employeeMapper.toEntity(getEmployee(id).get());
+        EmployeeModel removableEmployee = getEmployee(id)
+                .orElseThrow(() -> new IllegalArgumentException("Employee with ID %s not found".formatted(id)));
 
-        if (existingEmployee == null) {
-            throw new IllegalArgumentException("Employee does not exists");
-        }
-
-        employeeRepository.deleteById(existingEmployee.getId());
+        employeeRepository.deleteById(removableEmployee.getId());
     }
 }

@@ -46,6 +46,12 @@ public class Weapon {
     @Column(name = "WEAPON_STATUS")
     private WeaponStatus weaponStatus;
 
+    @Column(name = "ISSUED_EMPLOYEE_ID")
+    private Long issuedEmployeeId; // ID сотрудника, который выдал текущее оружие
+
+    @Column(name = "CLIENT_ID")
+    private Long clientId; // ID клиента, который купил текущее оружие
+
     @ManyToOne
     @JoinColumn(name = "WAREHOUSE_LOCATION_ID")
     private WarehouseLocation warehouseLocation;

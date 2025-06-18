@@ -1,6 +1,5 @@
 package com.example.warehouse.models;
 
-import com.example.warehouse.entities.WarehouseLocation;
 import com.example.warehouse.enums.WeaponStatus;
 import com.example.warehouse.enums.WeaponType;
 import lombok.AllArgsConstructor;
@@ -25,5 +24,6 @@ public class WeaponModel {
     private String serialNumber;
     private LocalDate productionDate;
     private WeaponStatus weaponStatus;
-    private WarehouseLocation warehouseLocation;
+    private Long issuedEmployeeId;
+    private Long clientId;
 }

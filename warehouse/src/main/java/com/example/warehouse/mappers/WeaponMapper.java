@@ -20,7 +20,8 @@ public class WeaponMapper {
                 .setSerialNumber(model.getSerialNumber())
                 .setProductionDate(model.getProductionDate())
                 .setWeaponStatus(model.getWeaponStatus())
-                .setWarehouseLocation(model.getWarehouseLocation());
+                .setIssuedEmployeeId(model.getIssuedEmployeeId())
+                .setClientId(model.getClientId());
     }
 
     public WeaponModel toModel(Weapon entity) {
@@ -32,7 +33,8 @@ public class WeaponMapper {
                 .setSerialNumber(entity.getSerialNumber())
                 .setProductionDate(entity.getProductionDate())
                 .setWeaponStatus(entity.getWeaponStatus())
-                .setWarehouseLocation(entity.getWarehouseLocation());
+                .setIssuedEmployeeId(entity.getIssuedEmployeeId())
+                .setClientId(entity.getClientId());
     }
 
     public List<Weapon> toEntities(List<WeaponModel> models) {

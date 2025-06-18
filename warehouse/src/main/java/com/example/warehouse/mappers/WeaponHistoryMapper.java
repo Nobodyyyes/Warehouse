@@ -14,22 +14,24 @@ public class WeaponHistoryMapper {
     public WeaponHistory toEntity(WeaponHistoryModel model) {
         return new WeaponHistory()
                 .setId(model.getId())
-                .setWeapon(model.getWeapon())
-                .setEmployee(model.getEmployee())
+                .setWeaponId(model.getWeaponId())
+                .setIssuedEmployeeId(model.getIssuedEmployeeId())
+                .setClientId(model.getClientId())
+                .setIssuedWarehouseLocationId(model.getIssuedWarehouseLocationId())
                 .setIssueAt(model.getIssueAt())
                 .setReturnedAt(model.getReturnedAt())
-                .setIssuedBy(model.getIssuedBy())
                 .setNotes(model.getNotes());
     }
 
     public WeaponHistoryModel toModel(WeaponHistory entity) {
         return new WeaponHistoryModel()
                 .setId(entity.getId())
-                .setWeapon(entity.getWeapon())
-                .setEmployee(entity.getEmployee())
+                .setWeaponId(entity.getWeaponId())
+                .setIssuedEmployeeId(entity.getIssuedEmployeeId())
+                .setClientId(entity.getClientId())
+                .setIssuedWarehouseLocationId(entity.getIssuedWarehouseLocationId())
                 .setIssueAt(entity.getIssueAt())
                 .setReturnedAt(entity.getReturnedAt())
-                .setIssuedBy(entity.getIssuedBy())
                 .setNotes(entity.getNotes());
     }
 

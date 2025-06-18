@@ -1,7 +1,5 @@
 package com.example.warehouse.models;
 
-import com.example.warehouse.entities.Employee;
-import com.example.warehouse.entities.Weapon;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,10 +16,11 @@ import java.time.LocalDate;
 public class WeaponHistoryModel {
 
     private Long id;
-    private Weapon weapon;
-    private Employee employee;
+    private Long weaponId;
+    private Long issuedEmployeeId;
+    private Long clientId;
+    private Long issuedWarehouseLocationId;
     private LocalDate issueAt;
     private LocalDate returnedAt;
-    private String issuedBy;
     private String notes;
 }

@@ -1,10 +1,10 @@
 package com.example.warehouse.services.impl;
 
-import com.example.warehouse.entities.Client;
 import com.example.warehouse.mappers.ClientMapper;
 import com.example.warehouse.models.ClientModel;
 import com.example.warehouse.repositories.ClientRepository;
 import com.example.warehouse.services.ClientService;
+import com.example.warehouse.utils.ValidationUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,55 +19,67 @@ public class ClientServiceImpl implements ClientService {
 
     private final ClientMapper clientMapper;
 
+    /**
+     * Получает список всех клиентов.
+     *
+     * @return Список моделей клиентов.
+     */
     @Override
     public List<ClientModel> getAllClients() {
-
-        List<ClientModel> clientModels = clientMapper.toModels(clientRepository.findAll());
-
-        if (clientModels.isEmpty()) {
-            throw new IllegalArgumentException("Clients does not exists");
-        }
-
-        return clientModels;
+        return clientMapper.toModels(clientRepository.findAll());
     }
 
+    /**
+     * Получает клиента по его идентификатору.
+     *
+     * @param id Идентификатор клиента.
+     * @return Optional, содержащий модель клиента, если клиент найден, или пустой Optional, если клиент не найден.
+     */
     @Override
     public Optional<ClientModel> getClientById(Long id) {
-
-        return clientMapper.toOptionalModel(clientRepository.findById(id));
+        return clientRepository.findById(id)
+                .map(clientMapper::toModel);
     }
 
+    /**
+     * Создает нового клиента.
+     *
+     * @param createClient Модель клиента, содержащая данные для создания.
+     * @return Модель клиента, созданного в базе данных.
+     */
     @Override
     public ClientModel createClient(ClientModel createClient) {
-
-        Client newClient = clientMapper.toEntity(createClient);
-
-        return clientMapper.toModel(clientRepository.save(newClient));
+        return clientMapper.toModel(clientRepository.save(clientMapper.toEntity(createClient)));
     }
 
+    /**
+     * Обновляет данные клиента.
+     *
+     * @param updateClient Модель клиента, содержащая обновленные данные.
+     *                     Поле ID должно быть заполнено, чтобы указать, какой клиент обновляется.
+     * @return Модель клиента после обновления в базе данных.
+     * @throws IllegalArgumentException Если поле ID у модели клиента равно null.
+     */
     @Override
     public ClientModel updateClient(ClientModel updateClient) {
 
-        Client updatedClient = new Client()
-                .setId(updateClient.getId())
-                .setFullName(updateClient.getFullName())
-                .setPassportNumber(updateClient.getPassportNumber())
-                .setAddress(updateClient.getAddress())
-                .setPhoneNumber(updateClient.getPhoneNumber())
-                .setPurchasedWeapons(updateClient.getPurchasedWeapons());
+        ValidationUtils.checkOnNull(updateClient.getId());
 
-        return clientMapper.toModel(clientRepository.save(updatedClient));
+        return clientMapper.toModel(clientRepository.save(clientMapper.toEntity(updateClient)));
     }
 
+    /**
+     * Удаляет клиента по его идентификатору.
+     *
+     * @param id Идентификатор клиента, который нужно удалить.
+     * @throws IllegalArgumentException Если клиент с указанным идентификатором не найден.
+     */
     @Override
     public void deleteClient(Long id) {
 
-        Client deleteClient = clientMapper.toEntity(getClientById(id).get());
+        ClientModel removableClient = getClientById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Client with ID %s not found".formatted(id)));
 
-        if (deleteClient == null) {
-            throw new IllegalArgumentException("Client with id %s does not exists".formatted(id));
-        }
-
-        clientRepository.deleteById(deleteClient.getId());
+        clientRepository.deleteById(removableClient.getId());
     }
 }

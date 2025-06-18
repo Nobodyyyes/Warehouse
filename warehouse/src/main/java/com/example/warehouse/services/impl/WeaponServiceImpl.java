@@ -1,10 +1,10 @@
 package com.example.warehouse.services.impl;
 
-import com.example.warehouse.entities.Weapon;
 import com.example.warehouse.mappers.WeaponMapper;
 import com.example.warehouse.models.WeaponModel;
 import com.example.warehouse.repositories.WeaponRepository;
 import com.example.warehouse.services.WeaponService;
+import com.example.warehouse.utils.ValidationUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,63 +19,67 @@ public class WeaponServiceImpl implements WeaponService {
 
     private final WeaponMapper weaponMapper;
 
+    /**
+     * Получает список всех оружий.
+     *
+     * @return Список моделей оружий.
+     */
     @Override
     public List<WeaponModel> getAllWeapons() {
-
-        List<WeaponModel> weaponModels = weaponMapper.toModels(weaponRepository.findAll());
-
-        if (weaponModels.isEmpty()) {
-            throw new IllegalArgumentException("Weapons does not exists");
-        }
-
-        return weaponModels;
+        return weaponMapper.toModels(weaponRepository.findAll());
     }
 
+    /**
+     * Получает оружие по его идентификатору.
+     *
+     * @param id Идентификатор оружия.
+     * @return Optional, содержащий модель оружия, если запись найдена, или пустой Optional, если запись не найдена.
+     */
     @Override
     public Optional<WeaponModel> getWeaponById(Long id) {
-
-        Optional<Weapon> weapon = weaponRepository.findById(id);
-
-        if (weapon.isPresent()) {
-            return weaponMapper.toOptionalModel(weapon);
-        }
-
-        return Optional.empty();
+        return weaponRepository.findById(id)
+                .map(weaponMapper::toModel);
     }
 
+    /**
+     * Создает новое оружие.
+     *
+     * @param createWeaponModel Модель оружия, содержащая данные для создания.
+     * @return Модель созданного оружия.
+     */
     @Override
     public WeaponModel createWeapon(WeaponModel createWeaponModel) {
-
-        Weapon saveWeapon = weaponMapper.toEntity(createWeaponModel);
-
-        return weaponMapper.toModel(weaponRepository.save(saveWeapon));
+        return weaponMapper.toModel(weaponRepository.save(weaponMapper.toEntity(createWeaponModel)));
     }
 
+    /**
+     * Обновляет существующее оружие.
+     *
+     * @param updateWeaponModel Модель оружия, содержащая обновленные данные.
+     *                          Поле ID должно быть заполнено, чтобы указать идентификатор записи.
+     * @return Модель обновленного оружия.
+     * @throws IllegalArgumentException Если поле ID у модели оружия равно null.
+     */
     @Override
     public WeaponModel updateWeapon(WeaponModel updateWeaponModel) {
 
-        Weapon updatedWeapon = new Weapon()
-                .setId(updateWeaponModel.getId())
-                .setName(updateWeaponModel.getName())
-                .setWeaponType(updateWeaponModel.getWeaponType())
-                .setCaliber(updateWeaponModel.getCaliber())
-                .setSerialNumber(updateWeaponModel.getSerialNumber())
-                .setProductionDate(updateWeaponModel.getProductionDate())
-                .setWeaponStatus(updateWeaponModel.getWeaponStatus())
-                .setWarehouseLocation(updateWeaponModel.getWarehouseLocation());
+        ValidationUtils.checkOnNull(updateWeaponModel.getId());
 
-        return weaponMapper.toModel(weaponRepository.save(updatedWeapon));
+        return weaponMapper.toModel(weaponRepository.save(weaponMapper.toEntity(updateWeaponModel)));
     }
 
+    /**
+     * Удаляет оружие по его идентификатору.
+     *
+     * @param id Идентификатор оружия, которое нужно удалить.
+     * @throws IllegalArgumentException Если запись с указанным идентификатором не найдена.
+     */
     @Override
     public void deleteWeapon(Long id) {
 
-        Weapon existingWeapon = weaponMapper.toEntity(getWeaponById(id).get());
+        WeaponModel removableWeapon = getWeaponById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Weapon with ID %s not found".formatted(id)));
 
-        if (existingWeapon == null) {
-            throw new IllegalArgumentException("Weapon does not exists");
-        }
-
-        weaponRepository.deleteById(existingWeapon.getId());
+        weaponRepository.deleteById(removableWeapon.getId());
     }
 }

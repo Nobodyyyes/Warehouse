@@ -17,8 +17,7 @@ public class ClientMapper {
                 .setFullName(model.getFullName())
                 .setPassportNumber(model.getPassportNumber())
                 .setAddress(model.getAddress())
-                .setPhoneNumber(model.getPhoneNumber())
-                .setPurchasedWeapons(model.getPurchasedWeapons());
+                .setPhoneNumber(model.getPhoneNumber());
     }
 
     public ClientModel toModel(Client entity) {
@@ -27,8 +26,7 @@ public class ClientMapper {
                 .setFullName(entity.getFullName())
                 .setPassportNumber(entity.getPassportNumber())
                 .setAddress(entity.getAddress())
-                .setPhoneNumber(entity.getPhoneNumber())
-                .setPurchasedWeapons(entity.getPurchasedWeapons());
+                .setPhoneNumber(entity.getPhoneNumber());
     }
 
     public List<Client> toEntities(List<ClientModel> models) {

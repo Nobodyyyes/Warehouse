@@ -22,5 +22,5 @@ public class EmployeeModel {
     private String department;
     private String passportNumber;
     private String serviceNumber;
-    private boolean isActive;
+    private Boolean isActive;
 }

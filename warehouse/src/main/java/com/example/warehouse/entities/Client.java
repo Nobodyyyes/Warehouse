@@ -35,6 +35,6 @@ public class Client {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "client")
-    private List<Weapon> purchasedWeapons;
+    @OneToMany(mappedBy = "CLIENT")
+    private List<Weapon> purchasedWeapons; // Клиент может иметь несколько оружий
 }

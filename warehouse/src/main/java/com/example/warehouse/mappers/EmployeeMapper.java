@@ -20,7 +20,7 @@ public class EmployeeMapper {
                 .setDepartment(employeeModel.getDepartment())
                 .setPassportNumber(employeeModel.getPassportNumber())
                 .setServiceNumber(employeeModel.getServiceNumber())
-                .setActive(employeeModel.isActive());
+                .setIsActive(employeeModel.getIsActive());
     }
 
     public EmployeeModel toModel(Employee employee) {
@@ -32,7 +32,7 @@ public class EmployeeMapper {
                 .setDepartment(employee.getDepartment())
                 .setPassportNumber(employee.getPassportNumber())
                 .setServiceNumber(employee.getServiceNumber())
-                .setActive(employee.isActive());
+                .setIsActive(employee.getIsActive());
     }
 
     public List<Employee> toEntities(List<EmployeeModel> models) {
