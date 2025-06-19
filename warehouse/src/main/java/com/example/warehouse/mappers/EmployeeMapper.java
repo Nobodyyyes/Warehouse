@@ -2,14 +2,14 @@ package com.example.warehouse.mappers;
 
 import com.example.warehouse.entities.Employee;
 import com.example.warehouse.models.EmployeeModel;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 @Component
-public class EmployeeMapper {
+@RequiredArgsConstructor
+public class EmployeeMapper implements BaseMapper<EmployeeModel, Employee> {
+
+    private final WeaponMapper weaponMapper;
 
     public Employee toEntity(EmployeeModel employeeModel) {
         return new Employee()
@@ -32,18 +32,7 @@ public class EmployeeMapper {
                 .setDepartment(employee.getDepartment())
                 .setPassportNumber(employee.getPassportNumber())
                 .setServiceNumber(employee.getServiceNumber())
-                .setIsActive(employee.getIsActive());
-    }
-
-    public List<Employee> toEntities(List<EmployeeModel> models) {
-        return models.stream().map(this::toEntity).collect(Collectors.toList());
-    }
-
-    public List<EmployeeModel> toModels(List<Employee> entities) {
-        return entities.stream().map(this::toModel).collect(Collectors.toList());
-    }
-
-    public Optional<EmployeeModel> toOptionalModel(Optional<Employee> employeeOptional) {
-        return employeeOptional.map(this::toModel);
+                .setIsActive(employee.getIsActive())
+                .setWeapons(weaponMapper.toModels(employee.getWeapons()));
     }
 }

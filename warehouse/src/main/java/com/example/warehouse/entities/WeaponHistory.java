@@ -23,17 +23,17 @@ public class WeaponHistory {
     @SequenceGenerator(name = "WEAPON_HISTORY_SEQ", sequenceName = "WEAPON_HISTORY_SEQ", allocationSize = 1)
     private Long id;
 
-    @Column(name = "WEAPON_ID")
-    private Long weaponId; // ID оружия
+    @ManyToOne
+    @JoinColumn(name = "EMPLOYEE_ID", nullable = false)
+    private Employee issuedBy;
 
-    @Column(name = "EMPLOYEE_ID")
-    private Long issuedEmployeeId; // ID выдавшего сотрудника
+    @ManyToOne
+    @JoinColumn(name = "CLIENT_ID", nullable = false)
+    private Client issuedTo;
 
-    @Column(name = "CLIENT_ID")
-    private Long clientId; // ID клиента
-
-    @Column(name = "ISSUED_WAREHOUSE_LOCATION_ID")
-    private Long issuedWarehouseLocationId; // Локация склада, откуда был выдан оружие
+    @ManyToOne
+    @JoinColumn(name = "WAREHOUSE_LOCATION_ID", nullable = false)
+    private WarehouseLocation issuedFrom;
 
     @Column(name = "ISSUE_AT")
     private LocalDate issueAt;

@@ -48,6 +48,6 @@ public class Employee {
     @Column(name = "IS_ACTIVE")
     private Boolean isActive;
 
-    @OneToMany(mappedBy = "EMPLOYEE", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Weapon> weapons; // Сотрудник может иметь несколько оружий
 }

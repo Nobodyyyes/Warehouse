@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,4 +20,5 @@ public class ClientModel {
     private String passportNumber;
     private String address;
     private String phoneNumber;
+    private List<WeaponModel> purchasedWeapons;
 }

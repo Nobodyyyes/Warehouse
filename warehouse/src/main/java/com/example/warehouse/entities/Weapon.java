@@ -36,7 +36,7 @@ public class Weapon {
     @Column(name = "CALIBER")
     private String caliber;
 
-    @Column(name = "SERIAL_NUMBER")
+    @Column(name = "SERIAL_NUMBER", unique = true)
     private String serialNumber;
 
     @Column(name = "PRODUCTION_DATE")
@@ -46,22 +46,16 @@ public class Weapon {
     @Column(name = "WEAPON_STATUS")
     private WeaponStatus weaponStatus;
 
-    @Column(name = "ISSUED_EMPLOYEE_ID")
-    private Long issuedEmployeeId; // ID сотрудника, который выдал текущее оружие
-
-    @Column(name = "CLIENT_ID")
-    private Long clientId; // ID клиента, который купил текущее оружие
-
     @ManyToOne
     @JoinColumn(name = "WAREHOUSE_LOCATION_ID")
     private WarehouseLocation warehouseLocation;
 
     @ManyToOne
-    @JoinColumn(name = "EMPLOYEE_ID")
+    @JoinColumn(name = "EMPLOYEE_ID") // текущий сотрудник, если не клиент
     private Employee employee;
 
     @ManyToOne
-    @JoinColumn(name = "CLIENT_ID")
+    @JoinColumn(name = "CLIENT_ID") // текущий клиент
     private Client client;
 
     @OneToMany(mappedBy = "weapon", cascade = CascadeType.ALL)

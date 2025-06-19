@@ -13,8 +13,10 @@ C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\e
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\EmployeeRank.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\WeaponStatus.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\WeaponType.java
+C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\mappers\BaseMapper.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\mappers\ClientMapper.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\mappers\EmployeeMapper.java
+C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\mappers\WarehouseLocationMapper.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\mappers\WeaponHistoryMapper.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\mappers\WeaponMapper.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\models\ClientModel.java
@@ -37,4 +39,5 @@ C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\e
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\WarehouseLocationService.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\WeaponHistoryService.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\WeaponService.java
+C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\utils\ValidationUtils.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\WarehouseApplication.java

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,4 +25,5 @@ public class EmployeeModel {
     private String passportNumber;
     private String serviceNumber;
     private Boolean isActive;
+    private List<WeaponModel> weapons;
 }

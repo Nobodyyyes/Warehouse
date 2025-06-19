@@ -2,13 +2,14 @@ package com.example.warehouse.mappers;
 
 import com.example.warehouse.entities.WarehouseLocation;
 import com.example.warehouse.models.WarehouseLocationModel;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Component
-public class WarehouseLocationMapper {
+@RequiredArgsConstructor
+public class WarehouseLocationMapper implements BaseMapper<WarehouseLocationModel, WarehouseLocation> {
+
+    private final WeaponMapper weaponMapper;
 
     public WarehouseLocation toEntity(WarehouseLocationModel model) {
         return new WarehouseLocation()
@@ -23,14 +24,7 @@ public class WarehouseLocationMapper {
                 .setId(entity.getId())
                 .setSection(entity.getSection())
                 .setShelf(entity.getShelf())
-                .setDescription(entity.getDescription());
-    }
-
-    public List<WarehouseLocation> toEntities(List<WarehouseLocationModel> models) {
-        return models.stream().map(this::toEntity).collect(Collectors.toList());
-    }
-
-    public List<WarehouseLocationModel> toModels(List<WarehouseLocation> entities) {
-        return entities.stream().map(this::toModel).collect(Collectors.toList());
+                .setDescription(entity.getDescription())
+                .setWeapons(weaponMapper.toModels(entity.getWeapons()));
     }
 }
