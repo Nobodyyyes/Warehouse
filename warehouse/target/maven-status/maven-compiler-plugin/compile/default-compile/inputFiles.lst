@@ -9,10 +9,10 @@ C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\e
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\entities\WarehouseLocation.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\entities\Weapon.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\entities\WeaponHistory.java
-C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\EmployeePosition.java
-C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\EmployeeRank.java
-C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\WeaponStatus.java
-C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\WeaponType.java
+C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\employee\EmployeePosition.java
+C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\employee\EmployeeRank.java
+C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\weapon\WeaponStatus.java
+C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\enums\weapon\WeaponType.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\mappers\BaseMapper.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\mappers\ClientMapper.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\mappers\EmployeeMapper.java

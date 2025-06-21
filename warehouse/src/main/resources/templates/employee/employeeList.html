@@ -8,6 +8,8 @@
 <body>
 <h1>Список сотрудников</h1>
 
+<input type="text" id="searchInput" placeholder="Поиск по ФИО..."/>
+
 <a th:href="@{/employees/new}">Добавить сотрудника</a>
 
 <table border="1">
@@ -30,7 +32,7 @@
         <td th:text="${employee.department}"></td>
         <td th:text="${employee.passportNumber}"></td>
         <td th:text="${employee.serviceNumber}"></td>
-        <td th:text="${employee.isActive()}"></td>
+        <td th:text="${employee.getIsActive()}"></td>
         <td>
             <a th:href="@{'/employees/edit/' + ${employee.id}}">Редактировать</a> |
             <a th:href="@{'/employees/delete/' + ${employee.id}}">Удалить</a>
@@ -39,5 +41,21 @@
 </table>
 
 <a th:href="@{/}">Назад в меню</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const tableRows = document.querySelectorAll('table tr:not(:first-child)');
+
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.toLowerCase();
+
+            tableRows.forEach(row => {
+                const fullName = row.cells[1].textContent.toLowerCase();
+                row.style.display = fullName.includes(query) ? '' : 'none';
+            });
+        });
+    });
+</script>
 </body>
 </html>

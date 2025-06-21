@@ -39,6 +39,12 @@ public class ClientController {
         return "client/clientEdit";
     }
 
+    @GetMapping("/{id}/remove-weapon/{weaponId}")
+    public String removeClientWeapon(@PathVariable Long id,
+                                     @PathVariable Long weaponId) {
+
+    }
+
     @PostMapping("/edit/{id}")
     public String updateClient(@PathVariable Long id, @ModelAttribute ClientModel clientModel) {
         clientModel.setId(id);

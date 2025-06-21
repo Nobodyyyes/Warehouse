@@ -8,6 +8,8 @@
 <body>
 <h1>Список оружия</h1>
 
+<input type="text" id="searchInput" placeholder="Поиск по названию..."/>
+
 <a th:href="@{/weapons/new}">Добавить оружие</a>
 
 <table border="1">
@@ -19,7 +21,7 @@
         <th>Серийный номер</th>
         <th>Дата производства</th>
         <th>Статус</th>
-        <th>Расположение на складе</th>
+        <th>Секция на складе</th>
         <th>Действия</th>
     </tr>
     <tr th:each="weapon : ${weapons}">
@@ -30,7 +32,7 @@
         <td th:text="${weapon.serialNumber}"></td>
         <td th:text="${weapon.productionDate}"></td>
         <td th:text="${weapon.weaponStatus}"></td>
-        <td th:text="${weapon.warehouseLocation}"></td>
+        <td th:text="${weapon.warehouseLocation.getSection()}"></td>
         <td>
             <a th:href="@{'/weapons/edit/' + ${weapon.id}}">Редактировать</a> |
             <a th:href="@{'/weapons/delete/' + ${weapon.id}}">Удалить</a>
@@ -39,5 +41,21 @@
 </table>
 
 <a th:href="@{/}">Назад в меню</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const tableRows = document.querySelectorAll('table tr:not(:first-child)');
+
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.toLowerCase();
+
+            tableRows.forEach(row => {
+                const fullName = row.cells[1].textContent.toLowerCase();
+                row.style.display = fullName.includes(query) ? '' : 'none';
+            });
+        });
+    });
+</script>
 </body>
 </html>

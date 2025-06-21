@@ -8,6 +8,8 @@
 <body>
 <h1>Список клиентов</h1>
 
+<input type="text" id="searchInput" placeholder="Поиск по ФИО..."/>
+
 <a th:href="@{/clients/new}">Добавить клиента</a>
 
 <table border="1">
@@ -40,5 +42,21 @@
 </table>
 
 <a th:href="@{/}">Назад в меню</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const tableRows = document.querySelectorAll('table tr:not(:first-child)');
+
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.toLowerCase();
+
+            tableRows.forEach(row => {
+                const fullName = row.cells[1].textContent.toLowerCase();
+                row.style.display = fullName.includes(query) ? '' : 'none';
+            });
+        });
+    });
+</script>
 </body>
 </html>
