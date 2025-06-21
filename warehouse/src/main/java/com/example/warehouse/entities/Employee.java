@@ -1,7 +1,7 @@
 package com.example.warehouse.entities;
 
-import com.example.warehouse.enums.EmployeePosition;
-import com.example.warehouse.enums.EmployeeRank;
+import com.example.warehouse.enums.employee.EmployeePosition;
+import com.example.warehouse.enums.employee.EmployeeRank;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

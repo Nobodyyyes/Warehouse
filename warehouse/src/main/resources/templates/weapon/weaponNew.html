@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Добавление оружия</title>
-    <link rel="stylesheet" th:href="@{/weapon/weapon-new.css}" />
+    <link rel="stylesheet" th:href="@{/main/template-new.css}"/>
 </head>
 <body>
 
 <h1>Добавить оружие</h1>
 
 <form th:action="@{'/weapons/new'}" th:object="${weapon}" method="post">
-    <label>Название: <input type="text" th:field="*{name}" required /></label><br/>
+    <label>Название: <input type="text" th:field="*{name}" required/></label><br/>
     <label>Тип оружия:
         <select th:field="*{weaponType}">
             <option th:each="r : ${weaponType}" th:value="${r}" th:text="${r}"></option>
@@ -20,9 +20,9 @@
             <option th:each="p : ${weaponStatus}" th:value="${p}" th:text="${p}"></option>
         </select>
     </label><br/>
-    <label>Калибр: <input type="text" th:field="*{caliber}" /></label><br/>
-    <label>Серийный номер: <input type="text" th:field="*{serialNumber}" /></label><br/>
-    <label>Дата продукции: <input type="text" th:field="*{productionDate}" /></label><br/>
+    <label>Калибр: <input type="text" th:field="*{caliber}"/></label><br/>
+    <label>Серийный номер: <input type="text" th:field="*{serialNumber}"/></label><br/>
+    <label>Дата продукции: <input type="text" th:field="*{productionDate}"/></label><br/>
 
     <button type="submit">Сохранить</button>
 </form>

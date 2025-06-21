@@ -2,37 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>История оружий</title>
-    <link rel="stylesheet" th:href="@{/weapon/weapon-list.css}"/>
+    <link rel="stylesheet" th:href="@{/main/template-list.css}"/>
 </head>
 
 <body>
 <h1>История оружия</h1>
 
-<a th:href="@{/weapons/new}">Добавить оружие</a>
-
 <table border="1">
     <tr>
         <th>ID</th>
-        <th>Оружие</th>
-        <th>Сотрудник</th>
         <th>Дата выдачи</th>
         <th>Дата возврата</th>
-        <th>Выдан</th>
+        <th>Оружие</th>
+        <th>Серийный номер оружия</th>
+        <th>ID сотрудника</th>
+        <th>ФИО сотрудника</th>
+        <th>Паспортные данные сотрудника</th>
+        <th>ФИО клиента</th>
+        <th>Паспортные данные клиента</th>
+        <th>Телефонный номер клиента</th>
+        <th>Секция склада</th>
+        <th>Описание склада</th>
         <th>Комментарии</th>
     </tr>
     <tr th:each="weaponHistory : ${weaponHistory}">
         <td th:text="${weaponHistory.id}"></td>
-        <td th:text="${weaponHistory.weapon}"></td>
-        <td th:text="${weaponHistory.employee}"></td>
         <td th:text="${weaponHistory.issueAt}"></td>
         <td th:text="${weaponHistory.returnedAt}"></td>
-        <td th:text="${weaponHistory.issuedBy}"></td>
+        <td th:text="${weaponHistory.weapon.getName()}"></td>
+        <td th:text="${weaponHistory.weapon.getSerialNumber()}"></td>
+        <td th:text="${weaponHistory.issuedBy.getId()}"></td>
+        <td th:text="${weaponHistory.issuedBy.getFullName()}"></td>
+        <td th:text="${weaponHistory.issuedBy.getPassportNumber()}"></td>
+        <td th:text="${weaponHistory.issuedTo.getFullName()}"></td>
+        <td th:text="${weaponHistory.issuedTo.getPassportNumber()}"></td>
+        <td th:text="${weaponHistory.issuedTo.getPhoneNumber()}"></td>
+        <td th:text="${weaponHistory.issuedFrom.getSection()}"></td>
+        <td th:text="${weaponHistory.issuedFrom.getDescription()}"></td>
         <td th:text="${weaponHistory.notes}"></td>
-        <td>
-            <a th:href="@{'/weapon/history/new'}">Редактировать</a> |
-            <a th:href="@{'/weapons/history/delete/' + ${weaponHistory.id}}">Удалить</a>
-        </td>
     </tr>
 </table>
+
+<a th:href="@{/}">Назад в меню</a>
 </body>
 </html>

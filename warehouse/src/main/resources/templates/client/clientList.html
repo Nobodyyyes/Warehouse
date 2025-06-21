@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Клиенты</title>
-    <link rel="stylesheet" th:href="@{/employee/employee-list.css}"/>
+    <link rel="stylesheet" th:href="@{/main/template-list.css}"/>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         <td th:text="${client.phoneNumber}"></td>
         <td>
             <span th:each="weapon : ${client.purchasedWeapons}"
-                  th:text="${weapon.name} + ' (' + weapon.serialNumber + ')' + (not ${weaponStat.last} ? ', ' : '')"
+                  th:text="${weapon.name + ' (' + weapon.serialNumber + ')'}"
                   th:with="weaponStat=${weaponStat}">
             </span>
         </td>
@@ -38,5 +38,7 @@
         </td>
     </tr>
 </table>
+
+<a th:href="@{/}">Назад в меню</a>
 </body>
 </html>

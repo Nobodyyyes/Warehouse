@@ -1,7 +1,7 @@
 package com.example.warehouse.controllers;
 
-import com.example.warehouse.enums.WeaponStatus;
-import com.example.warehouse.enums.WeaponType;
+import com.example.warehouse.enums.weapon.WeaponStatus;
+import com.example.warehouse.enums.weapon.WeaponType;
 import com.example.warehouse.models.WeaponModel;
 import com.example.warehouse.services.WeaponService;
 import lombok.RequiredArgsConstructor;

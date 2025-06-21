@@ -1,7 +1,7 @@
 package com.example.warehouse.entities;
 
-import com.example.warehouse.enums.WeaponStatus;
-import com.example.warehouse.enums.WeaponType;
+import com.example.warehouse.enums.weapon.WeaponStatus;
+import com.example.warehouse.enums.weapon.WeaponType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

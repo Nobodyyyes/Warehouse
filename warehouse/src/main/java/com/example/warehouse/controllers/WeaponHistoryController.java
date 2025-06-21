@@ -19,22 +19,4 @@ public class WeaponHistoryController {
         model.addAttribute("weaponHistory", weaponHistoryService.getAll());
         return "weaponHistory/weaponHistoryList";
     }
-
-    @GetMapping("/new")
-    public String showCreateForm(Model model) {
-        model.addAttribute("weaponHistory", new WeaponHistoryModel());
-        return "weaponHistory/weaponHistoryNew";
-    }
-
-    @PostMapping("/new")
-    public String createEmployee(@ModelAttribute("weaponHistory") WeaponHistoryModel weaponHistoryModel) {
-        weaponHistoryService.save(weaponHistoryModel);
-        return "redirect:/weapon/history";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String deleteEmployee(@PathVariable Long id) {
-        weaponHistoryService.deleteById(id);
-        return "redirect:/weapon/history";
-    }
 }

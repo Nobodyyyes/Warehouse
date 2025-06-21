@@ -1,4 +1,4 @@
-package com.example.warehouse.enums;
+package com.example.warehouse.enums.weapon;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
