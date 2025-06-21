@@ -1,6 +1,5 @@
 package com.example.warehouse.models;
 
-import com.example.warehouse.entities.Weapon;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +20,5 @@ public class WarehouseLocationModel {
     private String shelf;
     private String description;
     private List<WeaponModel> weapons;
+    private List<WeaponHistoryModel> issueHistories;
 }

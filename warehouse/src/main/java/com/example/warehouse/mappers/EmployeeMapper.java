@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class EmployeeMapper implements BaseMapper<EmployeeModel, Employee> {
 
-    private final WeaponMapper weaponMapper;
+    private final WeaponHistoryMapper weaponHistoryMapper;
 
     public Employee toEntity(EmployeeModel employeeModel) {
         return new Employee()
@@ -33,6 +33,6 @@ public class EmployeeMapper implements BaseMapper<EmployeeModel, Employee> {
                 .setPassportNumber(employee.getPassportNumber())
                 .setServiceNumber(employee.getServiceNumber())
                 .setIsActive(employee.getIsActive())
-                .setWeapons(weaponMapper.toModels(employee.getWeapons()));
+                .setIssuedHistories(weaponHistoryMapper.toModels(employee.getIssuedHistories()));
     }
 }

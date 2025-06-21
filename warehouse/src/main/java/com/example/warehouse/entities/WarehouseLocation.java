@@ -32,10 +32,9 @@ public class WarehouseLocation {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @OneToMany(mappedBy = "warehouseLocation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "warehouseLocation")
     private List<Weapon> weapons;
 
-    @ManyToOne
-    @JoinColumn(name = "EMPLOYEE_ID")
-    private Employee employee;
+    @OneToMany(mappedBy = "issuedFrom")
+    private List<WeaponHistory> issueHistories;
 }

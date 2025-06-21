@@ -11,6 +11,8 @@ public class ClientMapper implements BaseMapper<ClientModel, Client> {
 
     private final WeaponMapper weaponMapper;
 
+    private final WeaponHistoryMapper weaponHistoryMapper;
+
     public Client toEntity(ClientModel model) {
         return new Client()
                 .setId(model.getId())
@@ -27,6 +29,7 @@ public class ClientMapper implements BaseMapper<ClientModel, Client> {
                 .setPassportNumber(entity.getPassportNumber())
                 .setAddress(entity.getAddress())
                 .setPhoneNumber(entity.getPhoneNumber())
-                .setPurchasedWeapons(weaponMapper.toModels(entity.getPurchasedWeapons()));
+                .setPurchasedWeapons(weaponMapper.toModels(entity.getPurchasedWeapons()))
+                .setIssuedHistories(weaponHistoryMapper.toModels(entity.getIssuedHistories()));
     }
 }

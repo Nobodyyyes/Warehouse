@@ -16,7 +16,7 @@ public class WeaponHistoryController {
 
     @GetMapping
     public String weaponHistoryList(Model model) {
-        model.addAttribute("weaponHistory", weaponHistoryService.getAllHistory());
+        model.addAttribute("weaponHistory", weaponHistoryService.getAll());
         return "weaponHistory/weaponHistoryList";
     }
 
@@ -28,13 +28,13 @@ public class WeaponHistoryController {
 
     @PostMapping("/new")
     public String createEmployee(@ModelAttribute("weaponHistory") WeaponHistoryModel weaponHistoryModel) {
-        weaponHistoryService.createWeaponHistory(weaponHistoryModel);
+        weaponHistoryService.save(weaponHistoryModel);
         return "redirect:/weapon/history";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteEmployee(@PathVariable Long id) {
-        weaponHistoryService.deleteHistory(id);
+        weaponHistoryService.deleteById(id);
         return "redirect:/weapon/history";
     }
 }

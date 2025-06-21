@@ -28,12 +28,12 @@ public class Employee {
     @Column(name = "FULL_NAME")
     private String fullName;
 
-    @Column(name = "RANK")
     @Enumerated(EnumType.STRING)
+    @Column(name = "RANK")
     private EmployeeRank rank;
 
-    @Column(name = "POSITION")
     @Enumerated(EnumType.STRING)
+    @Column(name = "POSITION")
     private EmployeePosition position;
 
     @Column(name = "DEPARTMENT")
@@ -48,6 +48,6 @@ public class Employee {
     @Column(name = "IS_ACTIVE")
     private Boolean isActive;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<Weapon> weapons; // Сотрудник может иметь несколько оружий
+    @OneToMany(mappedBy = "issuedBy")
+    private List<WeaponHistory> issuedHistories;
 }

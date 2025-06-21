@@ -11,6 +11,8 @@ public class WarehouseLocationMapper implements BaseMapper<WarehouseLocationMode
 
     private final WeaponMapper weaponMapper;
 
+    private final WeaponHistoryMapper weaponHistoryMapper;
+
     public WarehouseLocation toEntity(WarehouseLocationModel model) {
         return new WarehouseLocation()
                 .setId(model.getId())
@@ -25,6 +27,7 @@ public class WarehouseLocationMapper implements BaseMapper<WarehouseLocationMode
                 .setSection(entity.getSection())
                 .setShelf(entity.getShelf())
                 .setDescription(entity.getDescription())
-                .setWeapons(weaponMapper.toModels(entity.getWeapons()));
+                .setWeapons(weaponMapper.toModels(entity.getWeapons()))
+                .setIssueHistories(weaponHistoryMapper.toModels(entity.getIssueHistories()));
     }
 }

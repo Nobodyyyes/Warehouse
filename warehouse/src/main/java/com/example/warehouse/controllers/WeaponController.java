@@ -18,7 +18,7 @@ public class WeaponController {
 
     @GetMapping
     public String listWeapons(Model model) {
-        model.addAttribute("weapons", weaponService.getAllWeapons());
+        model.addAttribute("weapons", weaponService.getAll());
         return "weapon/weaponList";
     }
 
@@ -32,13 +32,13 @@ public class WeaponController {
 
     @PostMapping("/new")
     public String createWeapon(@ModelAttribute("weapon") WeaponModel weaponModel) {
-        weaponService.createWeapon(weaponModel);
+        weaponService.save(weaponModel);
         return "redirect:/weapons";
     }
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
-        WeaponModel weapon = weaponService.getWeaponById(id).get();
+        WeaponModel weapon = weaponService.getById(id).get();
         model.addAttribute("weapon", weapon);
         return "weapon/weaponEdit";
     }
@@ -46,13 +46,13 @@ public class WeaponController {
     @PostMapping("/edit/{id}")
     public String updateWeapon(@PathVariable Long id, @ModelAttribute WeaponModel weapon) {
         weapon.setId(id);
-        weaponService.updateWeapon(weapon);
+        weaponService.update(weapon.getId(), weapon);
         return "redirect:/weapons";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteWeapon(@PathVariable Long id) {
-        weaponService.deleteWeapon(id);
+        weaponService.deleteById(id);
         return "redirect:/weapons";
     }
 }

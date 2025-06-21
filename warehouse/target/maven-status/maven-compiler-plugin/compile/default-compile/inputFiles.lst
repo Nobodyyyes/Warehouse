@@ -29,8 +29,10 @@ C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\e
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\repositories\WarehouseLocationRepository.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\repositories\WeaponHistoryRepository.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\repositories\WeaponRepository.java
+C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\BaseService.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\ClientService.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\EmployeeService.java
+C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\impl\BaseServiceImpl.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\impl\ClientServiceImpl.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\impl\EmployeeServiceImpl.java
 C:\Users\esmukanov\IdeaProjects\projects\warehouse\warehouse\src\main\java\com\example\warehouse\services\impl\WarehouseLocationServiceImpl.java

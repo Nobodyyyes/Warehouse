@@ -23,6 +23,15 @@ public class WeaponHistory {
     @SequenceGenerator(name = "WEAPON_HISTORY_SEQ", sequenceName = "WEAPON_HISTORY_SEQ", allocationSize = 1)
     private Long id;
 
+    @Column(name = "ISSUE_AT")
+    private LocalDate issueAt;
+
+    @Column(name = "RETURNED_AT")
+    private LocalDate returnedAt;
+
+    @Column(name = "NOTES")
+    private String notes;
+
     @ManyToOne
     @JoinColumn(name = "EMPLOYEE_ID", nullable = false)
     private Employee issuedBy;
@@ -34,15 +43,6 @@ public class WeaponHistory {
     @ManyToOne
     @JoinColumn(name = "WAREHOUSE_LOCATION_ID", nullable = false)
     private WarehouseLocation issuedFrom;
-
-    @Column(name = "ISSUE_AT")
-    private LocalDate issueAt;
-
-    @Column(name = "RETURNED_AT")
-    private LocalDate returnedAt;
-
-    @Column(name = "NOTES")
-    private String notes;
 
     @ManyToOne
     @JoinColumn(name = "WEAPON_ID", nullable = false)

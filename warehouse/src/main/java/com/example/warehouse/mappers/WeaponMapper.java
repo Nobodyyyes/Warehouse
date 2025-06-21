@@ -31,6 +31,8 @@ public class WeaponMapper implements BaseMapper<WeaponModel, Weapon> {
                 .setSerialNumber(entity.getSerialNumber())
                 .setProductionDate(entity.getProductionDate())
                 .setWeaponStatus(entity.getWeaponStatus())
+                .setWarehouseLocation(entity.getWarehouseLocation())
+                .setClient(entity.getClient())
                 .setWeaponHistories(weaponHistoryMapper.toModels(entity.getWeaponHistories()));
     }
 }

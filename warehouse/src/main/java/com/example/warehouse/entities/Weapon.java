@@ -51,11 +51,7 @@ public class Weapon {
     private WarehouseLocation warehouseLocation;
 
     @ManyToOne
-    @JoinColumn(name = "EMPLOYEE_ID") // текущий сотрудник, если не клиент
-    private Employee employee;
-
-    @ManyToOne
-    @JoinColumn(name = "CLIENT_ID") // текущий клиент
+    @JoinColumn(name = "CLIENT_ID")
     private Client client;
 
     @OneToMany(mappedBy = "weapon", cascade = CascadeType.ALL)

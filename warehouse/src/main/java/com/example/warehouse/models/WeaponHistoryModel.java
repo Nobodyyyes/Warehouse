@@ -20,11 +20,11 @@ import java.time.LocalDate;
 public class WeaponHistoryModel {
 
     private Long id;
-    private Employee issuedBy;
-    private Client issuedTo;
-    private WarehouseLocation issuedFrom;
     private LocalDate issueAt;
     private LocalDate returnedAt;
     private String notes;
+    private Employee issuedBy;
+    private Client issuedTo;
+    private WarehouseLocation issuedFrom;
     private Weapon weapon;
 }

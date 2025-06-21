@@ -18,7 +18,7 @@ public class EmployeeController {
 
     @GetMapping
     public String listEmployees(Model model) {
-        model.addAttribute("employees", employeeService.getAllEmployees());
+        model.addAttribute("employees", employeeService.getAll());
         return "employee/employeeList";
     }
 
@@ -32,13 +32,13 @@ public class EmployeeController {
 
     @PostMapping("/new")
     public String createEmployee(@ModelAttribute("employee") EmployeeModel employeeModel) {
-        employeeService.create(employeeModel);
+        employeeService.save(employeeModel);
         return "redirect:/employees";
     }
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
-        EmployeeModel employee = employeeService.getEmployee(id).get();
+        EmployeeModel employee = employeeService.getById(id).get();
         model.addAttribute("employee", employee);
         return "employee/employeeEdit";
     }
@@ -46,13 +46,13 @@ public class EmployeeController {
     @PostMapping("/edit/{id}")
     public String updateEmployee(@PathVariable Long id, @ModelAttribute EmployeeModel employee) {
         employee.setId(id);
-        employeeService.update(employee);
+        employeeService.update(employee.getId(), employee);
         return "redirect:/employees";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteEmployee(@PathVariable Long id) {
-        employeeService.deleteEmployee(id);
+        employeeService.deleteById(id);
         return "redirect:/employees";
     }
 }

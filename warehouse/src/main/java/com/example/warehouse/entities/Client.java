@@ -36,5 +36,8 @@ public class Client {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "client")
-    private List<Weapon> purchasedWeapons; // Клиент может иметь несколько оружий
+    private List<Weapon> purchasedWeapons;
+
+    @OneToMany(mappedBy = "issuedTo")
+    private List<WeaponHistory> issuedHistories;
 }

@@ -16,7 +16,7 @@ public class ClientController {
 
     @GetMapping
     public String clientList(Model model) {
-        model.addAttribute("clients", clientService.getAllClients());
+        model.addAttribute("clients", clientService.getAll());
         return "client/clientList";
     }
 
@@ -28,13 +28,13 @@ public class ClientController {
 
     @PostMapping("/new")
     public String createClient(@ModelAttribute("client") ClientModel clientModel) {
-        clientService.createClient(clientModel);
+        clientService.save(clientModel);
         return "redirect:/clients";
     }
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
-        ClientModel clientModel = clientService.getClientById(id).get();
+        ClientModel clientModel = clientService.getById(id).get();
         model.addAttribute("client", clientModel);
         return "client/clientEdit";
     }
@@ -42,13 +42,13 @@ public class ClientController {
     @PostMapping("/edit/{id}")
     public String updateClient(@PathVariable Long id, @ModelAttribute ClientModel clientModel) {
         clientModel.setId(id);
-        clientService.updateClient(clientModel);
+        clientService.update(clientModel.getId(), clientModel);
         return "redirect:/clients";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteClient(@PathVariable Long id) {
-        clientService.deleteClient(id);
+        clientService.deleteById(id);
         return "redirect:/clients";
     }
 }

@@ -25,5 +25,5 @@ public class EmployeeModel {
     private String passportNumber;
     private String serviceNumber;
     private Boolean isActive;
-    private List<WeaponModel> weapons;
+    private List<WeaponHistoryModel> issuedHistories;
 }
