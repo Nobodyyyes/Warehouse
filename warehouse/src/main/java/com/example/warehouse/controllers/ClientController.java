@@ -42,7 +42,8 @@ public class ClientController {
     @GetMapping("/{id}/remove-weapon/{weaponId}")
     public String removeClientWeapon(@PathVariable Long id,
                                      @PathVariable Long weaponId) {
-
+        clientService.removeWeapon(id, weaponId);
+        return "redirect:/clients/edit/" + id;
     }
 
     @PostMapping("/edit/{id}")

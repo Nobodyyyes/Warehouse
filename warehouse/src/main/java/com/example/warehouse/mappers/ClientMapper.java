@@ -19,7 +19,8 @@ public class ClientMapper implements BaseMapper<ClientModel, Client> {
                 .setFullName(model.getFullName())
                 .setPassportNumber(model.getPassportNumber())
                 .setAddress(model.getAddress())
-                .setPhoneNumber(model.getPhoneNumber());
+                .setPhoneNumber(model.getPhoneNumber())
+                .setPurchasedWeapons(weaponMapper.toEntities(model.getPurchasedWeapons()));
     }
 
     public ClientModel toModel(Client entity) {

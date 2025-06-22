@@ -1,10 +1,8 @@
 package com.example.warehouse.enums.employee;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 public enum EmployeeRank {
 
     GUARD("Охранник"),
@@ -15,4 +13,8 @@ public enum EmployeeRank {
     CAPTAIN("Капитан");
 
     private final String description;
+
+    EmployeeRank(String description) {
+        this.description = description;
+    }
 }

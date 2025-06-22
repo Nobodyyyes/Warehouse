@@ -15,11 +15,11 @@
     <label>Номер телефона: <input type="text" th:field="*{phoneNumber}"/></label><br/>
     <label>Список оружий:</label><br/>
     <ul>
-        <li th:each="weapon : ${client.purchasedWeapons}"
-            th:text="${weapon.name + ' (' + weapon.serialNumber + ')'}">
-
+        <li th:each="weapon : ${client.purchasedWeapons}">
+            <span th:text="${weapon.name + ' (' + weapon.serialNumber + ')'}"></span>
+            &nbsp;—&nbsp;
             <a th:href="@{'/clients/' + ${client.id} + '/remove-weapon/' + ${weapon.id}}"
-               onclick="return confirm('Удалить это оружие?');">Удалить</a>
+               onclick="return confirm('Удалить это оружие?');">[Удалить]</a>
         </li>
     </ul>
 

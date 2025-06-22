@@ -3,6 +3,7 @@ package com.example.warehouse.mappers;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public interface BaseMapper<M, E> {
 
@@ -22,6 +23,6 @@ public interface BaseMapper<M, E> {
 
         if (from == null) return Collections.emptyList();
 
-        return from.stream().map(withMapper).toList();
+        return from.stream().map(withMapper).collect(Collectors.toList());
     }
 }

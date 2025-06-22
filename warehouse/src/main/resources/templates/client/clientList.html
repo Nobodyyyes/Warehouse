@@ -30,7 +30,7 @@
         <td th:text="${client.phoneNumber}"></td>
         <td>
             <span th:each="weapon : ${client.purchasedWeapons}"
-                  th:text="${weapon.name + ' (' + weapon.serialNumber + ')'}"
+                  th:text="${weapon.name + ' (' + weapon.serialNumber + '). '}"
                   th:with="weaponStat=${weaponStat}">
             </span>
         </td>

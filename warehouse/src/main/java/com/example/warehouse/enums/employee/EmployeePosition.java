@@ -1,10 +1,8 @@
 package com.example.warehouse.enums.employee;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 public enum EmployeePosition {
 
     WAREHOUSE_MANAGER("Заведующий складом"),
@@ -15,4 +13,8 @@ public enum EmployeePosition {
     DEPUTY_MANAGER("Заместитель заведующего");
 
     private final String description;
+
+    EmployeePosition(String description) {
+        this.description = description;
+    }
 }
